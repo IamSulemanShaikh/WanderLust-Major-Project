@@ -1,0 +1,100 @@
+<style>
+    .search-btn {
+      background-color: #fe424d;
+      color: white;
+      padding: 0 1rem 0 1rem;
+      border-radius: 25px;
+    }
+    .search-btn:hover {
+      background-color: #fe424d;
+      color: white;
+    }
+    .search-btn i {
+      display: inline;
+      margin-right: 0.5rem;
+    }
+    .search-inp {
+      border-radius: 25px;
+      padding: 0.5rem 3rem 0.5rem 3rem;
+      font-size: 1rem;
+    }
+  </style>
+  
+  <nav
+    class="navbar navbar-expand-md navbar-expand-sm bg-body-light border-bottom sticky-top navbar-light bg-light"
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"
+        ><i class="fa-regular fa-compass"></i
+      ></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/listings">Explore</a>
+        </div>
+  
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2 search-inp"
+              type="search"
+              placeholder="Search destinations"
+            />
+            <button class="btn search-btn" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>Search
+            </button>
+          </form>
+        </div>
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">Add Listng</a>
+          <% if(!currUser){ %>
+          <a class="nav-link" aria-current="page" href="/signup"
+            ><b>Sign up</b></a
+          >
+          <a class="nav-link" href="/login"><b>Log in</b></a>
+          <% } %> <% if(currUser){ %>
+          <a class="nav-link" href="/logout"><b>LogOut</b></a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let navbarToggler = document.querySelector(".navbar-toggler");
+      navbarToggler.addEventListener("click", function () {
+        // Toggle a class to indicate whether the navbar is expanded or not
+        document.querySelector(".navbar").classList.toggle("expanded");
+  
+        // Adjust the scroll position based on your requirements
+        window.scrollTo({
+          top: document.getElementById("filters-main").offsetHeight,
+          behavior: "smooth",
+        });
+      });
+    });
+  </script>
+  <style>
+    /* Add this style to increase the size of the navbar and adjust options */
+    .navbar.expanded {
+      height: 150px; /* Adjust the height as needed */
+    }
+  
+    /* Add any other styles for the expanded navbar and adjusted options */
+    .navbar.expanded .navbar-nav {
+      /* Add your styles for the 
+      navbar options when expanded */
+      background-color: #f8f9fa;
+    }
+  </style>
